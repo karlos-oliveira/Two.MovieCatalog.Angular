@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { SharedModule } from '../shared/shared.module';
 import { MovieRoutingModule } from './movie-routing.module';
 import { MovieComponent } from './movie.component';
-
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    MovieComponent
-  ],
+  declarations: [MovieComponent],
   imports: [
-    CommonModule,
-    MovieRoutingModule
+    MovieRoutingModule,
+    SharedModule,
+    NgbDatepickerModule,
   ]
 })
 export class MovieModule { }
