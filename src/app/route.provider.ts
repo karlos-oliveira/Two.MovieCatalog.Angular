@@ -15,6 +15,20 @@ function configureRoutes(routesService: RoutesService) {
         order: 1,
         layout: eLayoutType.application,
       },
+      {
+        path: '/movie-catalog',
+        name: '::Menu:MovieCatalog',
+        iconClass: 'fas fa-movie',
+        order: 2,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/movies',
+        name: '::Menu:Movies',
+        parentName: '::Menu:MovieCatalog',
+        layout: eLayoutType.application,
+        requiredPolicy: 'MovieCatalog.Movies',
+      },
     ]);
   };
 }
