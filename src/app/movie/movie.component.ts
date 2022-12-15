@@ -47,7 +47,7 @@ export class MovieComponent implements OnInit {
   editMovie(id: string) {
     this.movieService.get(id).subscribe((movie) => {
       this.selectedMovie = movie;
-      this.buildForm();
+      this.buildForm(true);
       this.isModalOpen = true;
     });
   }
@@ -60,14 +60,29 @@ export class MovieComponent implements OnInit {
     });
   }
 
-  buildForm() {
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      genre: [null, Validators.required],
-      releaseDate: [null, Validators.required],
-      price: [null, Validators.required],
-      synopsis: [null, Validators.required],
-    });
+  buildForm(isEdit: boolean = false) {
+    if(isEdit)
+    {
+      let movie = this.selectedMovie as MovieDto;
+
+      this.form = this.fb.group({
+        name: [movie.name, Validators.required],
+        genre: [movie.genre, Validators.required],
+        releaseDate: [movie.releaseDate, Validators.required],
+        price: [movie.price, Validators.required],
+        synopsis: [movie.synopsis, Validators.required],
+      });
+    }
+    else
+    {
+      this.form = this.fb.group({
+        name: ['', Validators.required],
+        genre: [null, Validators.required],
+        releaseDate: [null, Validators.required],
+        price: [null, Validators.required],
+        synopsis: [null, Validators.required],
+      });
+    }
   }
 
   save() {

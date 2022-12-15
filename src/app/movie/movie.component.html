@@ -20,6 +20,7 @@
   <div class="card-body">
     <ngx-datatable [rows]="movie.items" [count]="movie.totalCount" [list]="list" default>
       <ngx-datatable-column
+        *abpPermission="'MovieCatalog.Movies.Edit'"
         [name]="'::Actions' | abpLocalization"
         [maxWidth]="150"
         [sortable]="false"
